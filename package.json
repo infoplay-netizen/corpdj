@@ -1,0 +1,11 @@
+{
+  "name": "dj-info-wedding",
+  "version": "1.0.0",
+  "description": "DJ iNFO - Свадьбы и Корпоративы",
+  "scripts": {
+    "build": "echo 'Build completed'"
+  },
+  "keywords": ["wedding", "dj", "events", "music"],
+  "author": "",
+  "license": "ISC"
+}
