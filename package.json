@@ -1,0 +1,20 @@
+{
+  "name": "dj-info-website",
+  "version": "1.0.0",
+  "description": "Professional DJ website for weddings and corporate events",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "keywords": [
+    "dj",
+    "wedding",
+    "corporate",
+    "events",
+    "music"
+  ],
+  "author": "DJ iNFO",
+  "license": "MIT"
+}

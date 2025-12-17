@@ -1,0 +1,34 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "wedding/index.html",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "wedding/thank-you.html",
+      "use": "@vercel/static"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/",
+      "dest": "/wedding/index.html"
+    },
+    {
+      "src": "/thank-you",
+      "dest": "/wedding/thank-you.html"
+    },
+    {
+      "src": "/wedding/(.*)",
+      "dest": "/wedding/$1"
+    },
+    {
+      "src": "/(.*)",
+      "status": 301,
+      "headers": {
+        "Location": "/"
+      }
+    }
+  ]
+}
