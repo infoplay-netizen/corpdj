@@ -241,10 +241,13 @@
                 <h2 class="booking-title" data-i18n="booking_title"></h2>
                 <p class="booking-subtitle" data-i18n="booking_subtitle"></p>
                 
-                <form class="booking-form" action="https://api.web3forms.com/submit" method="POST">
+                <form id="bookingForm" class="booking-form" action="https://api.web3forms.com/submit" method="POST">
                     <input type="hidden" name="access_key" value="bef0f4f3-f6a7-4bf3-8c49-10fe3e430022">
                     <input type="hidden" name="subject" value="Новая заявка на бронирование - DJ iNFO">
-                    <input type="hidden" name="redirect" value="thank-you.html">
+                    <input type="hidden" name="redirect" value="https://sergejcerkasov.github.io/wedding/thank-you.html">
+                    <input type="hidden" name="from_name" value="DJ iNFO Booking Form">
+                    <input type="text" name="_honey" style="display:none">
+                    <input type="hidden" name="_template" value="table">
                     
                     <div class="form-group">
                         <input type="text" name="name" data-i18n="booking_form_name" placeholder="Имя" required>
@@ -355,5 +358,39 @@
 
     <script src="js/script.js"></script>
     <script src="js/i18n.js"></script>
+    <script>
+        // Handle form submission
+        document.getElementById('bookingForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Show loading state
+            const submitBtn = this.querySelector('button[type="submit"]');
+            const originalBtnText = submitBtn.innerHTML;
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = 'Отправка...';
+            
+            // Submit form data
+            const formData = new FormData(this);
+            
+            fetch('https://api.web3forms.com/submit', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => {
+                if (response.ok) {
+                    // Redirect to thank you page on success
+                    window.location.href = 'thank-you.html';
+                } else {
+                    throw new Error('Form submission failed');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Произошла ошибка при отправке формы. Пожалуйста, попробуйте еще раз.');
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = originalBtnText;
+            });
+        });
+    </script>
 </body>
 </html>
