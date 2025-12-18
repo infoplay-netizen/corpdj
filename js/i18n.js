@@ -12,7 +12,7 @@ const translations = {
         // Hero Section
         'hero_subtitle': 'Весілля • Корпоративи • Свята',
         'hero_title_main': 'DJ',
-        'hero_title_span': 'ARS',
+        'hero_title_span': 'iNFO',
         'hero_description': 'Створюю незабутню атмосферу на вашому святі. Професійне звучання та світло для ідеального заходу.',
         'hero_btn_booking': 'Забронювати дату',
         'hero_btn_pricing': 'Дізнатися вартість',
@@ -43,7 +43,7 @@ const translations = {
         'pricing_min_feature6': '2 колонки RCF 715 (Італія) 1400Вт',
         'pricing_min_feature7': '4 простих заливних світлових прилади на 1 стійці',
         'pricing_min_feature8': '1 радіомікрофон Shure',
-        'pricing_min_price': 'Договірна <span></span>',
+        'pricing_min_price': '16 000 <span>грн</span>',
         'pricing_min_btn': 'Обрати комплект',
         
         'pricing_std_title': 'Стандартний<br>комплект',
@@ -57,7 +57,7 @@ const translations = {
         'pricing_std_feature8': 'Кероване світлове обладнання: 4 заливних прожектори, 2 голови типу Wash і 2 голови типу Spot керовані через спеціальні програми',
         'pricing_std_feature9': 'Дим-машина 900Вт',
         'pricing_std_feature10': '1 радіо мікрофон Shure',
-        'pricing_std_price': 'Договірна <span></span>',
+        'pricing_std_price': '20 000 <span>грн</span>',
         'pricing_std_btn': 'Обрати комплект',
         
         'pricing_max_title': 'Максимальний<br>комплект',
@@ -71,7 +71,7 @@ const translations = {
         'pricing_max_feature8': '2 Сабвуфери Mackie потужністю 1400 ВТ',
         'pricing_max_feature9': 'Кероване світлове обладнання: 4 заливних прожектори, 2 голови типу Wash і 2 голови типу Spot керовані через спеціальні програми',
         'pricing_max_feature10': 'Дим-машина 900Вт',
-        'pricing_max_price': 'Договірна <span></span>',
+        'pricing_max_price': '24 000 <span>грн</span>',
         'pricing_max_btn': 'Обрати комплект',
         
         // Reviews Section
