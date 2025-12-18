@@ -551,6 +551,51 @@
         createParticles();
         createGlowLines();
         createConfetti();
+
+        // Обработка данных формы
+        document.addEventListener('DOMContentLoaded', function() {
+            const formData = JSON.parse(sessionStorage.getItem('formData') || '{}');
+            
+            // Очищаем sessionStorage после использования
+            sessionStorage.removeItem('formData');
+            
+            // Если есть имя, добавляем его в заголовок
+            if (formData.name) {
+                const title = document.querySelector('.thank-you-title');
+                if (title) {
+                    title.textContent = `Спасибо, ${formData.name}!`;
+                }
+            }
+            
+            // Дополнительно можно добавить отображение других данных формы
+            // Например, если нужно отобразить email или телефон
+            const formDetails = [];
+            if (formData.email) formDetails.push(`Email: ${formData.email}`);
+            if (formData.phone) formDetails.push(`Телефон: ${formData.phone}`);
+            if (formData.event_date) formDetails.push(`Дата: ${formData.event_date}`);
+            
+            if (formDetails.length > 0) {
+                const detailsElement = document.createElement('div');
+                detailsElement.className = 'form-details';
+                detailsElement.style.marginTop = '20px';
+                detailsElement.style.color = '#ffffff';
+                detailsElement.style.textAlign = 'center';
+                detailsElement.style.lineHeight = '1.6';
+                
+                formDetails.forEach(detail => {
+                    const p = document.createElement('p');
+                    p.textContent = detail;
+                    p.style.margin = '5px 0';
+                    detailsElement.appendChild(p);
+                });
+                
+                const container = document.querySelector('.thank-you-container');
+                const button = document.querySelector('.btn');
+                if (container && button) {
+                    container.insertBefore(detailsElement, button);
+                }
+            }
+        });
     </script>
     <script src="js/i18n.js"></script>
 </body>

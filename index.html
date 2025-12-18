@@ -400,8 +400,17 @@
                 
                 // Проверяем успешность отправки
                 if (result.success) {
-                    // Принудительное перенаправление
-                    window.location.href = 'thank-you.html';
+                    // Добавляем небольшую задержку перед редиректом
+                    setTimeout(() => {
+                        // Сохраняем данные формы в sessionStorage для отображения на странице благодарности
+                        const formData = new FormData(document.getElementById('bookingForm'));
+                        const formDataObj = {};
+                        formData.forEach((value, key) => formDataObj[key] = value);
+                        sessionStorage.setItem('formData', JSON.stringify(formDataObj));
+                        
+                        // Перенаправляем на страницу благодарности
+                        window.location.href = 'thank-you.html';
+                    }, 500);
                     return; // Выходим из функции
                 } else {
                     throw new Error(result.message || 'Ошибка при отправке формы');
