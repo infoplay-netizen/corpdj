@@ -35,7 +35,7 @@
             position: relative;
         }
 
-        /* Animated Background */
+        /* Анимированный фон */
         .bg-animation {
             position: fixed;
             top: 0;
@@ -65,7 +65,7 @@
             100% { transform: rotate(360deg); }
         }
 
-        /* Floating particles */
+        /* Партиклы */
         .particles {
             position: fixed;
             width: 100%;
@@ -88,10 +88,7 @@
                 transform: translateY(100vh) scale(0);
                 opacity: 0;
             }
-            10% {
-                opacity: 0.6;
-            }
-            90% {
+            10%, 90% {
                 opacity: 0.6;
             }
             100% {
@@ -100,322 +97,201 @@
             }
         }
 
-        /* Glowing lines */
-        .glow-lines {
-            position: fixed;
-            width: 100%;
-            height: 100%;
-            z-index: 1;
-            overflow: hidden;
-        }
-
-        .glow-line {
-            position: absolute;
-            width: 2px;
-            height: 200px;
-            background: linear-gradient(to bottom, transparent, var(--primary-color), transparent);
-            animation: lineMove 8s infinite;
-            opacity: 0.3;
-        }
-
-        @keyframes lineMove {
-            0% { transform: translateY(-200px); }
-            100% { transform: translateY(100vh); }
-        }
-
-        /* Logo */
+        /* Логотип */
         .logo {
             position: fixed;
             top: 30px;
             left: 30px;
-            font-family: 'Oswald', sans-serif;
+            color: var(--text-light);
             font-size: 28px;
             font-weight: 700;
-            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
             text-decoration: none;
             z-index: 100;
+            text-transform: uppercase;
+            letter-spacing: 2px;
         }
 
-        /* Main Content */
+        /* Контейнер благодарности */
         .thank-you-container {
             position: relative;
             z-index: 10;
             text-align: center;
-            padding: 60px 40px;
             max-width: 800px;
-            background: rgba(10, 10, 10, 0.8);
-            border: 1px solid rgba(0, 240, 255, 0.2);
-            border-radius: 30px;
-            backdrop-filter: blur(20px);
-            box-shadow: 
-                0 0 60px rgba(0, 240, 255, 0.1),
-                0 0 100px rgba(255, 0, 229, 0.05),
-                inset 0 0 60px rgba(0, 0, 0, 0.5);
+            padding: 40px;
+            background: rgba(10, 10, 10, 0.7);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            margin: 20px;
         }
 
-        /* Success Icon */
+        /* Иконка успеха */
         .success-icon-wrapper {
             position: relative;
-            width: 150px;
-            height: 150px;
-            margin: 0 auto 40px;
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 30px;
         }
 
         .success-icon {
-            width: 150px;
-            height: 150px;
+            position: relative;
+            width: 100%;
+            height: 100%;
+            background: var(--bg-darker);
             border-radius: 50%;
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
             display: flex;
             align-items: center;
             justify-content: center;
-            animation: iconPop 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55) both;
-            position: relative;
             z-index: 2;
         }
 
-        .success-icon::before {
-            content: '';
-            position: absolute;
-            inset: -3px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            z-index: -1;
-            animation: pulse 2s infinite;
-        }
-
         .success-icon i {
-            font-size: 70px;
-            color: var(--bg-dark);
-            animation: checkMark 0.5s ease 0.3s both;
+            font-size: 50px;
+            color: var(--primary-color);
         }
 
         .ring {
             position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 150px;
-            height: 150px;
-            border: 2px solid var(--primary-color);
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             border-radius: 50%;
-            animation: ringExpand 1s ease-out infinite;
+            border: 2px solid transparent;
+            animation: ringPulse 2s infinite;
         }
 
-        .ring:nth-child(2) { animation-delay: 0.3s; }
-        .ring:nth-child(3) { animation-delay: 0.6s; }
-
-        @keyframes iconPop {
-            0% { transform: scale(0); }
-            100% { transform: scale(1); }
+        .ring:nth-child(2) {
+            animation-delay: 0.5s;
         }
 
-        @keyframes checkMark {
-            0% { opacity: 0; transform: scale(0) rotate(-45deg); }
-            100% { opacity: 1; transform: scale(1) rotate(0deg); }
+        .ring:nth-child(3) {
+            animation-delay: 1s;
         }
 
-        @keyframes pulse {
-            0%, 100% { opacity: 1; transform: scale(1); }
-            50% { opacity: 0.5; transform: scale(1.1); }
+        @keyframes ringPulse {
+            0% {
+                transform: scale(1);
+                opacity: 1;
+                border-color: var(--primary-color);
+            }
+            100% {
+                transform: scale(1.5);
+                opacity: 0;
+                border-color: var(--secondary-color);
+            }
         }
 
-        @keyframes ringExpand {
-            0% { transform: translate(-50%, -50%) scale(1); opacity: 0.8; }
-            100% { transform: translate(-50%, -50%) scale(2); opacity: 0; }
-        }
-
-        /* Typography */
+        /* Текст */
         .thank-you-title {
-            font-family: 'Oswald', sans-serif;
-            font-size: clamp(40px, 8vw, 72px);
-            font-weight: 900;
-            text-transform: uppercase;
-            margin-bottom: 15px;
-            background: linear-gradient(90deg, var(--text-light), var(--primary-color));
+            font-size: 3rem;
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            animation: fadeInUp 0.8s ease 0.4s both;
-            text-shadow: 0 0 40px rgba(0, 240, 255, 0.3);
+            color: transparent;
         }
 
         .thank-you-subtitle {
-            font-size: 24px;
-            font-weight: 600;
-            margin-bottom: 25px;
-            color: var(--secondary-color);
-            animation: fadeInUp 0.8s ease 0.6s both;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: var(--text-light);
         }
 
         .thank-you-text {
-            font-size: 18px;
+            font-size: 1.2rem;
             color: var(--text-gray);
-            line-height: 1.8;
-            margin-bottom: 40px;
-            animation: fadeInUp 0.8s ease 0.8s both;
+            margin-bottom: 30px;
+            line-height: 1.6;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
-        /* Contact Info */
+        /* Контакты */
         .quick-contact {
             display: flex;
-            justify-content: center;
-            gap: 30px;
-            flex-wrap: wrap;
-            margin-bottom: 40px;
-            animation: fadeInUp 0.8s ease 1s both;
+            flex-direction: column;
+            gap: 15px;
+            margin: 30px 0;
         }
 
         .quick-contact-item {
             display: flex;
             align-items: center;
-            gap: 12px;
-            padding: 15px 25px;
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 50px;
-            transition: all 0.3s ease;
+            justify-content: center;
+            gap: 10px;
+            color: var(--text-light);
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: color 0.3s;
         }
 
         .quick-contact-item:hover {
-            background: rgba(0, 240, 255, 0.1);
-            border-color: var(--primary-color);
-            transform: translateY(-3px);
-        }
-
-        .quick-contact-item i {
-            font-size: 20px;
             color: var(--primary-color);
         }
 
-        .quick-contact-item span {
-            font-size: 16px;
-            font-weight: 500;
+        .quick-contact-item i {
+            font-size: 1.3rem;
         }
 
-        /* Social Links */
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-bottom: 40px;
-            animation: fadeInUp 0.8s ease 1.2s both;
-        }
-
-        .social-link {
-            width: 55px;
-            height: 55px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--text-light);
-            font-size: 22px;
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-
-        .social-link:hover {
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            border-color: transparent;
-            color: var(--bg-dark);
-            transform: translateY(-5px) scale(1.1);
-            box-shadow: 0 10px 30px rgba(0, 240, 255, 0.3);
-        }
-
-        /* Button */
+        /* Кнопка */
         .btn {
             display: inline-block;
-            padding: 20px 60px;
-            font-size: 14px;
-            font-weight: 700;
-            letter-spacing: 3px;
-            text-transform: uppercase;
+            padding: 15px 40px;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            color: white;
             text-decoration: none;
-            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
-            color: var(--bg-dark);
-            border: none;
             border-radius: 50px;
+            font-weight: 600;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: none;
             cursor: pointer;
-            transition: all 0.3s ease;
-            animation: fadeInUp 0.8s ease 1.4s both;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-            transition: left 0.5s ease;
-        }
-
-        .btn:hover::before {
-            left: 100%;
+            margin-top: 20px;
         }
 
         .btn:hover {
-            transform: translateY(-5px);
-            box-shadow: 
-                0 15px 40px rgba(0, 240, 255, 0.4),
-                0 0 60px rgba(255, 0, 229, 0.2);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
         }
 
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(40px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* Confetti */
-        .confetti {
-            position: fixed;
-            z-index: 1000;
-        }
-
+        /* Адаптивность */
         @media (max-width: 768px) {
             .thank-you-container {
-                margin: 20px;
-                padding: 40px 25px;
+                padding: 30px 20px;
+                margin: 15px;
+            }
+
+            .thank-you-title {
+                font-size: 2.2rem;
+            }
+
+            .thank-you-subtitle {
+                font-size: 1.4rem;
+            }
+
+            .thank-you-text {
+                font-size: 1rem;
             }
 
             .success-icon-wrapper {
-                width: 120px;
-                height: 120px;
-            }
-
-            .success-icon {
-                width: 120px;
-                height: 120px;
+                width: 100px;
+                height: 100px;
+                margin-bottom: 20px;
             }
 
             .success-icon i {
-                font-size: 50px;
-            }
-
-            .quick-contact {
-                flex-direction: column;
-                align-items: center;
+                font-size: 40px;
             }
 
             .logo {
                 top: 20px;
                 left: 20px;
-                font-size: 24px;
+                font-size: 22px;
             }
         }
     </style>
@@ -423,19 +299,13 @@
 <body>
     <a href="index.html" class="logo">DJ iNFO</a>
 
-    <!-- Animated Background -->
+    <!-- Анимированный фон -->
     <div class="bg-animation"></div>
-
-    <!-- Particles -->
     <div class="particles" id="particles"></div>
-
-    <!-- Glow Lines -->
     <div class="glow-lines" id="glowLines"></div>
-
-    <!-- Confetti Container -->
     <div id="confetti"></div>
 
-    <!-- Main Content -->
+    <!-- Основной контент -->
     <div class="thank-you-container">
         <div class="success-icon-wrapper">
             <div class="ring"></div>
@@ -446,34 +316,26 @@
             </div>
         </div>
 
-        <h1 class="thank-you-title" data-i18n="thankyou_title"></h1>
-        <h2 class="thank-you-subtitle" data-i18n="thankyou_subtitle"></h2>
-        <p class="thank-you-text" data-i18n="thankyou_text"></p>
+        <h1 class="thank-you-title">Спасибо за заявку!</h1>
+        <h2 class="thank-you-subtitle">Ваша заявка успешно отправлена</h2>
+        <p class="thank-you-text">Мы свяжемся с вами в ближайшее время для уточнения деталей.</p>
 
         <div class="quick-contact">
-            <a href="viber://chat?number=%2B380934797577" class="quick-contact-item" style="text-decoration: none; color: inherit;">
-                <i class="fas fa-phone"></i>
-                <span data-i18n="thankyou_contact_viber"></span>
+            <a href="viber://chat?number=%2B380934797577" class="quick-contact-item">
+                <i class="fab fa-viber"></i>
+                <span>+38 (093) 479-75-77</span>
             </a>
-            <div class="quick-contact-item">
+            <a href="https://t.me/dj_info" class="quick-contact-item">
                 <i class="fab fa-telegram"></i>
                 <span>@dj_info</span>
-            </div>
+            </a>
         </div>
 
-        <div class="social-links">
-            <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
-            <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
-            <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
-            <a href="#" class="social-link"><i class="fab fa-telegram"></i></a>
-            <a href="#" class="social-link"><i class="fab fa-viber"></i></a>
-        </div>
-
-        <a href="index.html" class="btn" data-i18n="thankyou_back_btn"></a>
+        <a href="index.html" class="btn">Вернуться на главную</a>
     </div>
 
     <script>
-        // Create floating particles
+        // Создаем партиклы
         function createParticles() {
             const container = document.getElementById('particles');
             const colors = ['#00f0ff', '#ff00e5', '#7b2dff'];
@@ -489,7 +351,7 @@
             }
         }
 
-        // Create glow lines
+        // Создаем светящиеся линии
         function createGlowLines() {
             const container = document.getElementById('glowLines');
             const colors = ['#00f0ff', '#ff00e5'];
@@ -498,105 +360,80 @@
                 const line = document.createElement('div');
                 line.className = 'glow-line';
                 line.style.left = (i * 25) + '%';
-                line.style.background = `linear-gradient(to bottom, transparent, ${colors[i % 2]}, transparent)`;
-                line.style.animationDelay = (i * 1.5) + 's';
+                line.style.background = `linear-gradient(90deg, transparent, ${colors[i % colors.length]}, transparent)`;
+                line.style.animationDelay = (Math.random() * 5) + 's';
                 container.appendChild(line);
             }
         }
 
-        // Create confetti
+        // Создаем конфетти
         function createConfetti() {
             const container = document.getElementById('confetti');
-            const colors = ['#00f0ff', '#ff00e5', '#7b2dff', '#ffffff', '#ffff00', '#00ff00'];
-            const shapes = ['square', 'circle'];
+            const colors = ['#00f0ff', '#ff00e5', '#7b2dff', '#ffffff'];
+            const confettiCount = 100;
             
-            for (let i = 0; i < 100; i++) {
+            for (let i = 0; i < confettiCount; i++) {
                 const confetti = document.createElement('div');
                 confetti.className = 'confetti';
-                confetti.style.position = 'fixed';
                 confetti.style.left = Math.random() * 100 + 'vw';
-                confetti.style.top = '-20px';
-                confetti.style.width = (Math.random() * 10 + 5) + 'px';
-                confetti.style.height = confetti.style.width;
                 confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
-                confetti.style.borderRadius = shapes[Math.floor(Math.random() * shapes.length)] === 'circle' ? '50%' : '0';
-                confetti.style.animation = `confettiFall ${Math.random() * 3 + 2}s linear forwards`;
-                confetti.style.animationDelay = Math.random() * 2 + 's';
+                confetti.style.animationDelay = (Math.random() * 5) + 's';
+                confetti.style.animationDuration = (Math.random() * 3 + 3) + 's';
                 container.appendChild(confetti);
             }
-
-            // Add confetti animation
-            const style = document.createElement('style');
-            style.textContent = `
-                @keyframes confettiFall {
-                    0% {
-                        transform: translateY(0) rotate(0deg);
-                        opacity: 1;
-                    }
-                    100% {
-                        transform: translateY(100vh) rotate(720deg);
-                        opacity: 0;
-                    }
-                }
-            `;
-            document.head.appendChild(style);
-
-            // Remove confetti after animation
-            setTimeout(() => {
-                container.innerHTML = '';
-            }, 5000);
         }
 
-        // Initialize
-        createParticles();
-        createGlowLines();
-        createConfetti();
-
-        // Обработка данных формы
+        // Инициализация при загрузке страницы
         document.addEventListener('DOMContentLoaded', function() {
-            const formData = JSON.parse(sessionStorage.getItem('formData') || '{}');
-            
-            // Очищаем sessionStorage после использования
-            sessionStorage.removeItem('formData');
-            
-            // Если есть имя, добавляем его в заголовок
-            if (formData.name) {
-                const title = document.querySelector('.thank-you-title');
-                if (title) {
-                    title.textContent = `Спасибо, ${formData.name}!`;
+            // Запускаем анимации
+            createParticles();
+            createGlowLines();
+            createConfetti();
+
+            // Показываем данные формы, если они есть
+            try {
+                const formData = JSON.parse(sessionStorage.getItem('formData') || '{}');
+                sessionStorage.removeItem('formData');
+
+                // Обновляем приветствие, если есть имя
+                if (formData.name) {
+                    const title = document.querySelector('.thank-you-title');
+                    if (title) {
+                        title.textContent = `Спасибо, ${formData.name}!`;
+                    }
                 }
-            }
-            
-            // Дополнительно можно добавить отображение других данных формы
-            // Например, если нужно отобразить email или телефон
-            const formDetails = [];
-            if (formData.email) formDetails.push(`Email: ${formData.email}`);
-            if (formData.phone) formDetails.push(`Телефон: ${formData.phone}`);
-            if (formData.event_date) formDetails.push(`Дата: ${formData.event_date}`);
-            
-            if (formDetails.length > 0) {
-                const detailsElement = document.createElement('div');
-                detailsElement.className = 'form-details';
-                detailsElement.style.marginTop = '20px';
-                detailsElement.style.color = '#ffffff';
-                detailsElement.style.textAlign = 'center';
-                detailsElement.style.lineHeight = '1.6';
-                
-                formDetails.forEach(detail => {
-                    const p = document.createElement('p');
-                    p.textContent = detail;
-                    p.style.margin = '5px 0';
-                    detailsElement.appendChild(p);
-                });
-                
-                const container = document.querySelector('.thank-you-container');
-                const button = document.querySelector('.btn');
-                if (container && button) {
-                    container.insertBefore(detailsElement, button);
+
+                // Показываем дополнительные данные формы
+                const details = [];
+                if (formData.phone) details.push(`Телефон: ${formData.phone}`);
+                if (formData.email) details.push(`Email: ${formData.email}`);
+                if (formData.event_date) details.push(`Дата: ${formData.event_date}`);
+
+                if (details.length > 0) {
+                    const detailsContainer = document.createElement('div');
+                    detailsContainer.className = 'form-details';
+                    detailsContainer.style.marginTop = '20px';
+                    detailsContainer.style.color = '#ffffff';
+                    detailsContainer.style.textAlign = 'center';
+                    detailsContainer.style.lineHeight = '1.6';
+
+                    details.forEach(detail => {
+                        const p = document.createElement('p');
+                        p.textContent = detail;
+                        p.style.margin = '5px 0';
+                        detailsContainer.appendChild(p);
+                    });
+
+                    const container = document.querySelector('.thank-you-container');
+                    const button = document.querySelector('.btn');
+                    if (container && button) {
+                        container.insertBefore(detailsContainer, button);
+                    }
                 }
+            } catch (e) {
+                console.error('Ошибка при обработке данных формы:', e);
             }
         });
     </script>
-    <script src="js/i18n.js"></script>
 </body>
 </html>
